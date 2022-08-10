@@ -4,7 +4,6 @@ package main
 import (
 	"fmt"
 	_ "math" // Suppresses compiler warnings related to fmt if it is not being used, and executes initialization functions if there are any
-	"math/cmplx"
 
 	h "basic/analysis/human"
 	_ "basic/analysis/operation"
@@ -34,66 +33,7 @@ const (
 	StatusPartialContent       = 206
 )
 
-var (
-	goIsFun bool       = true
-	maxInt  uint64     = 1<<64 - 1
-	complex complex128 = cmplx.Sqrt(-5 + 12i)
-)
-
-var elements = map[string]map[string]string{
-	"H": map[string]string{
-		"name":  "Hydrogen",
-		"state": "gas",
-	},
-	"He": map[string]string{
-		"name":  "Helium",
-		"state": "gas",
-	},
-	"Li": map[string]string{
-		"name":  "Lithium",
-		"state": "solid",
-	},
-	"Be": map[string]string{
-		"name":  "Beryllium",
-		"state": "solid",
-	},
-	"B": map[string]string{
-		"name":  "Boron",
-		"state": "solid",
-	},
-	"C": map[string]string{
-		"name":  "Carbon",
-		"state": "solid",
-	},
-	"N": map[string]string{
-		"name":  "Nitrogen",
-		"state": "gas",
-	},
-	"O": map[string]string{
-		"name":  "Oxygen",
-		"state": "gas",
-	},
-	"F": map[string]string{
-		"name":  "Fluorine",
-		"state": "gas",
-	},
-	"Ne": map[string]string{
-		"name":  "Neon",
-		"state": "gas",
-	},
-}
-
 var sliceEx = make([]int, 3, 9)
-
-type Artist struct {
-	Name, Genre string
-	Songs       int
-}
-
-func newRelease(a *Artist) int {
-	a.Songs++
-	return a.Songs
-}
 
 func routeF(n int) {
 	for i := 0; i < 10; i++ {
@@ -104,19 +44,6 @@ func routeF(n int) {
 func main() {
 	location := "Dorne" // Inside a function, the := short assignment statement can be used in place of a var declaration with implicit type.
 	fmt.Println(firstName+" "+lastName, location)
-
-	me := &Artist{Name: "Matt", Genre: "Electro", Songs: 42}
-	fmt.Printf("%s released their %dth song\n", me.Name, newRelease(me))
-	fmt.Printf("%s has a total of %d songs", me.Name, me.Songs)
-
-	const f = "%T(%v)\n"
-	fmt.Printf(f, goIsFun, goIsFun)
-	fmt.Printf(f, maxInt, maxInt)
-	fmt.Printf(f, complex, complex)
-
-	if el, ok := elements["Li"]; ok {
-		fmt.Println(el["name"], el["state"])
-	}
 
 	fmt.Println(len(sliceEx))
 
