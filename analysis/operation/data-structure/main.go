@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"reflect"
+)
 
 type Artist struct {
 	Name, Genre string
@@ -56,8 +59,10 @@ var (
 			"state": "gas",
 		},
 	}
-	anEmptykeyValMap = make(map[int]string, 0) // create an empty object with the help of make keyword
-	anUnorderKeyVal  = map[interface{}]interface{}{ // to create an unordered misclleniuos object this can be done with the help interface
+	arr              [5]int = [5]int{10, 20, 30}           //numeric array to define
+	slc                     = []string{"fsfd", "dsfds"}    // define a slice which just extension of array but does not have strict length
+	anEmptykeyValMap        = make(map[int]string)         // create an empty object with the help of make keyword
+	anUnorderKeyVal         = map[interface{}]interface{}{ // to create an unordered misclleniuos object this can be done with the help interface
 		"str": 3,
 		23:    "jfklsdjfjls",
 	}
@@ -75,4 +80,21 @@ func main() {
 
 	fmt.Println(len(anEmptykeyValMap))
 	fmt.Println(len(anUnorderKeyVal))
+	fmt.Println(len(arr))
+	fmt.Println("Slice length is : ", len(slc))
+
+	if v, ok := anUnorderKeyVal["str"]; ok {
+		fmt.Println(v)
+	}
+
+	sliceExample()
+}
+
+func sliceExample() {
+
+	var intSlice = new([50]int)[0:10] // another way of define a slice by using new keyword
+
+	fmt.Println(reflect.ValueOf(intSlice).Kind())
+	fmt.Printf("intSlice \tLen: %v \tCap: %v\n", len(intSlice), cap(intSlice))
+	fmt.Println(intSlice)
 }

@@ -7,6 +7,7 @@ import (
 
 	h "basic/analysis/human"
 	_ "basic/analysis/operation"
+	jwtAuth "basic/analysis/operation/auth"
 	v "basic/analysis/vehicle"
 
 	_ "github.com/google/wire"
@@ -68,5 +69,7 @@ func main() {
 	for i, j := range bmw.Structure() {
 		fmt.Printf("%-15s <=====> %15s\n", j, labour.Structure()[i])
 	}
+	jwtAuth.JwtAuthentication()
+	jwtAuth.Authentication()
 
 }
